@@ -1,0 +1,195 @@
+/* ==========================================================================
+   ANIMATIONS & VISUAL EFFECTS - Subbas M Portfolio
+   ========================================================================== */
+
+/* Keyframe Animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+}
+
+@keyframes radarPing {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes cyanRadarPing {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 242, 254, 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0, 242, 254, 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgba(0, 242, 254, 0);
+  }
+}
+
+@keyframes textGradientShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toastSlideOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(20px) scale(0.9);
+  }
+}
+
+@keyframes borderRotate {
+  0% {
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    filter: hue-rotate(360deg);
+  }
+}
+
+@keyframes terminalBlink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+@keyframes badgeGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(0, 242, 254, 0.45);
+  }
+}
+
+/* Background Ambient Orbs */
+.ambient-glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.35;
+  animation: floatSlow 12s ease-in-out infinite;
+}
+
+.orb-cyan {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(0, 242, 254, 0.4) 0%, rgba(56, 189, 248, 0.05) 70%, transparent 100%);
+  top: 5%;
+  left: 15%;
+}
+
+.orb-mint {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(5, 150, 105, 0.05) 70%, transparent 100%);
+  top: 30%;
+  right: 10%;
+  animation-delay: -4s;
+}
+
+.orb-purple {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.05) 70%, transparent 100%);
+  bottom: 20%;
+  left: 25%;
+  animation-delay: -7s;
+}
+
+/* Shimmering Gradient Text */
+.shimmer-text {
+  background: linear-gradient(135deg, #ffffff 0%, #00F2FE 45%, #10B981 80%, #38BDF8 100%);
+  background-size: 250% 250%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradientShimmer 6s ease infinite;
+}
+
+/* Glowing Border Card */
+.glow-card-border {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-card-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(0, 242, 254, 0.3), transparent 60%, rgba(16, 185, 129, 0.25));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.glow-card-border:hover::before {
+  background: linear-gradient(135deg, #00F2FE, rgba(56, 189, 248, 0.5), #10B981);
+}
+
+/* Status Indicator Dot */
+.status-indicator-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #10B981;
+  display: inline-block;
+  animation: radarPing 2s infinite cubic-bezier(0, 0, 0.2, 1);
+}
